@@ -270,7 +270,10 @@ class KadasterService
 		$responces = [];
 		// Then we need to enrich that
 		foreach($nummeraanduidingen['nummeraanduidingen'] as $nummeraanduiding){
-					
+			
+			
+			$responce['id'] = $nummeraanduiding['identificatiecode'];
+			
 			$adresseerbaarObject = $this->analyseUri($nummeraanduiding["_links"]['adresseerbaarObject']['href']);
 			
 			// Let see what we got here in terms of object
@@ -288,11 +291,10 @@ class KadasterService
 					$nummeraanduiding['adres'] = $this->getStandplaats($adresseerbaarObject['id']);
 					$responce['type'] = 'standplaats';
 					break;
-			}			
-			$responce['status'] = $nummeraanduiding['adres']['status'];
-			//var_dump ($nummeraanduiding);
+			}
 			
 			// Lets copy the following information if it exsists
+					
 			if(array_key_exists('huisnummer', $nummeraanduiding)){$responce['huisnummer'] = $nummeraanduiding['huisnummer'];}
 			if(array_key_exists('huisnummertoevoeging', $nummeraanduiding)){$responce['huisnummertoevoeging'] = $nummeraanduiding['huisnummertoevoeging'];}
 			if(array_key_exists('postcode', $nummeraanduiding)){$responce['postcode']= $nummeraanduiding['postcode'];}
@@ -307,6 +309,13 @@ class KadasterService
 			$nummeraanduiding['woonplaats'] = $this->getWoonplaats($bijbehorendeOpenbareRuimte['id']);	
 			
 			$responce['woonplaats'] = $nummeraanduiding['woonplaats']['naam'];
+			$responce['gemeente_nummer'] = (int) $nummeraanduiding['woonplaats']['identificatiecode'];
+			$responce['gemeente_rsin'] = (int) '';
+			
+			$responce['status_nummeraanduiding'] = $nummeraanduiding['status'];
+			$responce['status_verblijfsobject'] = $nummeraanduiding['adres']['status'];
+			$responce['status_openbare_ruimte'] = $nummeraanduiding['openbareRuimte']['status'];
+			$responce['status_woonplaats'] = $nummeraanduiding['woonplaats']['status'];
 			
 			// Dan willen we nog wat links toevoegen
 			$responce['_links'] = [];

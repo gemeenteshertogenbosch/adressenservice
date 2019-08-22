@@ -56,6 +56,7 @@ final class AdresGetSubscriber implements EventSubscriberInterface
 		 
 		$huisnummer = (int) $event->getRequest()->query->get('huisnummer');
 		$postcode = $event->getRequest()->query->get('postcode');
+		$huisnummerToevoeging= $event->getRequest()->query->get('huisnummertoevoeging');
 		
 		// Even iets van basis valdiatie
 		if(!$huisnummer || !is_int($huisnummer)){
@@ -69,12 +70,32 @@ final class AdresGetSubscriber implements EventSubscriberInterface
 		
 		$adressen= $this->kadasterService->getAdresOnHuisnummerPostcode($huisnummer, $postcode);
 				
+		
+		// If a huisnummer_toevoeging is provided we need to do some aditional filtering
+		if($huisnummerToevoeging){
+			$response["_links"]["self"] = "/adressen?huisnummer=".$huisnummer."&huisnummertoevoeging=".$huisnummerToevoeging."&postcode=".$postcode;
+			
+			// Lets loop trough the addreses to see if we have a match
+			$filterdAdressen = [];
+			foreach($adressen as $adres){
+				if(array_key_exists('huisnummertoevoeging', $adres) && preg_match( '/.*?'. $huisnummerToevoeging.'.*?/' ,$adres['huisnummertoevoeging'])){
+					$filterdAdressen[] = $adres;
+				}
+			}
+			
+			// we are only going to overide our initial result if we have more then one match
+			if(count($filterdAdressen) > 0){
+				$adressen= $filterdAdressen;
+			}
+			
+		}
+		
+		// Let then create the responce		
 		$response = [];
 		$response["adressen"] = $adressen;
 		$response["_links"] = ["self"=>"/adressen?huisnummer=".$huisnummer."&postcode=".$postcode];
 		$response["totalItems"] = count($adressen);
 		$response["itemsPerPage"] =30;
-		
 				
 		$json = $this->serializer->serialize(
 				$response,
