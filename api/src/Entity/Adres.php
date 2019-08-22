@@ -41,7 +41,7 @@ use Doctrine\ORM\Mapping as ORM;
  *                      {
  *                          "name" = "huisnummer_toevoeging",
  *                          "in" = "query",
- *                          "description" = "The sufix of the housenumber that you are searching for, used to filer a result list. Only applied when one or more matches can be found. Compared in a non-strict manner, meaning a wildcard is aplied both afther and before the given value when comparing for matches",
+ *                          "description" = "The sufix of the housenumber that you are searching for, used to filter a result list. Only applied when one or more matches can be found. Compared in a non-strict manner, meaning a wildcard is aplied both afther and before the given value when comparing for matches",
  *                          "required" = false,
  *                          "type" : "string"
  *                      },                      
