@@ -175,7 +175,7 @@ class Adres
     private $postcode;
 
      /**
-     * @param string $woonplaats The city or locality to witch this adres belongs.
+     * @param string $woonplaats The city  to witch this adres belongs.
      *
      * @ApiProperty(
      *     attributes={
@@ -196,6 +196,21 @@ class Adres
      *     attributes={
      *         "swagger_context"={
      *         	   "description" = "The ID of the city or locality to witch this adres belongs",
+     *             "type"="integer",
+     *             "example"=3594
+     *         }
+     *     }
+     * )
+     */
+    private $woonplaatsNummer;
+    
+    /**
+     * @param string $gemeenteNummer The ID of the locality to witch this adres belongs.
+     *
+     * @ApiProperty(
+     *     attributes={
+     *         "swagger_context"={
+     *         	   "description" = "The ID of the  locality to witch this adres belongs",
      *             "type"="integer",
      *             "example"=3594
      *         }
@@ -388,6 +403,18 @@ class Adres
         $this->woonplaats = $woonplaats;
 
         return $this;
+    }
+    
+    public function getWoonplaatsNummer(): ?int
+    {
+    	return $this->woonplaatsNummer;
+    }
+    
+    public function setWoonplaatsNummer(?int $woonplaatsNummer): self
+    {
+    	$this->woonplaatsNummer= $woonplaatsNummer;
+    	
+    	return $this;
     }
     
     public function getGemeenteNummer(): ?int

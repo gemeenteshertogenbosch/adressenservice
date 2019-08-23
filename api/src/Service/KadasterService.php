@@ -309,7 +309,8 @@ class KadasterService
 			$nummeraanduiding['woonplaats'] = $this->getWoonplaats($bijbehorendeOpenbareRuimte['id']);	
 			
 			$responce['woonplaats'] = $nummeraanduiding['woonplaats']['naam'];
-			$responce['gemeente_nummer'] = (int) $nummeraanduiding['woonplaats']['identificatiecode'];
+			$responce['woonplaats_nummer'] = (int) $nummeraanduiding['woonplaats']['identificatiecode'];
+			$responce['gemeente_nummer'] = (int) '';
 			$responce['gemeente_rsin'] = (int) '';
 			
 			$responce['status_nummeraanduiding'] = $nummeraanduiding['status'];
