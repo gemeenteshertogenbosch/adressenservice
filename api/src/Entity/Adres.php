@@ -34,21 +34,21 @@ use Doctrine\ORM\Mapping as ORM;
  *                      {
  *                          "name" = "huisnummer",
  *                          "in" = "query",
- *                          "description" = "The number of the addres you are searching for",
+ *                          "description" = "The number of the building",
  *                          "required" = true,
  *                          "type" : "integer"
  *                      },                      
  *                      {
  *                          "name" = "huisnummer_toevoeging",
  *                          "in" = "query",
- *                          "description" = "The sufix of the housenumber that you are searching for, used to filer a result list. Only applied when one or more matches can be found. Compared in a non-strict manner, meaning a wildcard is aplied both afther and before the given value when comparing for matches",
+ *                          "description" = "The suffix of the house number. This is used to filter a result list. Only applied when one or more matches can be found. Compared in a non-strict manner, meaning a wildcard is applied both after and before the given value when comparing for matches",
  *                          "required" = false,
  *                          "type" : "string"
  *                      },                      
  *                      {
  *                          "name" = "postcode",
  *                          "in" = "query",
- *                          "description" = "The zip or postalcode of the addres you are searching for in a P6 format e.g 1234AB (so without spaces)",
+ *                          "description" = "The zip or postcode of the address in a P6 format e.g. 1234AB (without spaces)",
  *                          "required" = true,
  *                          "type" : "string",
  *                          "format" : "P6"
@@ -74,7 +74,7 @@ class Adres
      * 	   identifier=true,
      *     attributes={
      *         "swagger_context"={
-	 *         	   "description" = "The BAG identifier of this addres",
+	 *         	   "description" = "The BAG identifier of this address",
      *             "type"="string",
      *             "example"="0363200000218908"
      *         }
@@ -84,12 +84,12 @@ class Adres
 	private $id;
 	
     /**
-     * @param string $type The type of this addres.
+     * @param string $type The type of this address.
      *     
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
- 	 *         	   "description" = "The type of addres",
+ 	 *         	   "description" = "The type of address",
      *             "type"="string",
      *             "enum"={"verblijfsobject", "ligplaats", "standplaats"},
      *             "example"="verblijfsobject"
@@ -115,12 +115,12 @@ class Adres
     private $oppervlakte;
 
     /**
-     * @param integer $huisnummer The housenumber of this addres.
+     * @param integer $huisnummer The house number of this address.
      *     
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
- 	 *         	   "description" = "The housenumber of this addres",
+ 	 *         	   "description" = "The house number of this address",
      *             "type"="integer",
      *             "example"=147
      *         }
@@ -130,12 +130,12 @@ class Adres
     private $huisnummer;
 
     /**
-     * @param string $huisnummerToevoeging The sufix to the housenumber of this address.
+     * @param string $huisnummerToevoeging The suffix of the house number of this address.
      * 
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
- 	 *         	   "description" = "The sufix to the housenumber of this addres",
+ 	 *         	   "description" = "The suffix of the house number of this address",
      *             "type"="string",
      *             "example"="huis"
      *         }
@@ -145,12 +145,12 @@ class Adres
     private $huisnummerToevoeging;
 
     /**
-     * @param string $straat The streetname for this addres.
+     * @param string $straat The street name of this address.
      *
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
- 	 *         	   "description" = "The streetname for this addres",
+ 	 *         	   "description" = "The street name of this address",
      *             "type"="string",
      *             "example"="Nieuwezijds Voorburgwal"
      *         }
@@ -160,12 +160,12 @@ class Adres
     private $straat; 
 
     /**
-     * @param string $postcode The zip or postalcode of this addres.
+     * @param string $postcode The zip or postalcode of this address.
      *
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
- 	 *         	   "description" = "The zip or postalcode of this addres",
+ 	 *         	   "description" = "The zip or postcode of this address",
      *             "type"="string",
      *             "example"="1012RJ"
      *         }
@@ -180,7 +180,7 @@ class Adres
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
- 	 *         	   "description" = "The city or locality to witch this adres belongs",
+ 	 *         	   "description" = "The city or locality to which this address belongs",
      *             "type"="string",
      *             "example"="Amsterdam"
      *         }
@@ -190,12 +190,12 @@ class Adres
     private $woonplaats;
     
     /**
-     * @param string $gemeenteNummer The ID of the city or locality to witch this adres belongs.
+     * @param string $gemeenteNummer The ID of the city or locality to which this address belongs.
      *
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
-     *         	   "description" = "The ID of the city or locality to witch this adres belongs",
+     *         	   "description" = "The ID of the city or locality to which this address belongs",
      *             "type"="integer",
      *             "example"=3594
      *         }
@@ -220,12 +220,12 @@ class Adres
     private $gemeenteNummer;
     
     /**
-     * @param string $gemeenteRsin The RSIN of the city or locality to witch this adres belongs.
+     * @param string $gemeenteRsin The RSIN of the city or locality to which this address belongs.
      *
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
-     *         	   "description" = "The RSIN of the city or locality to witch this adres belongs",
+     *         	   "description" = "The RSIN of the city or locality to which this address belongs",
      *             "type"="string",
      *             "example"="002220647"
      *         }
@@ -235,12 +235,12 @@ class Adres
     private $gemeenteRsin;   
     
     /**
-     * @param string $status_nummeraanduiding The last know status of this addres.
+     * @param string $status_nummeraanduiding The last known status of this address.
      *
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
-     *         	   "description" = "The last know status of this addres",
+     *         	   "description" = "The last known status of this address",
      *             "type"="string",
      *             "example"="NaamgevingUitgegeven"
      *         }
@@ -250,12 +250,12 @@ class Adres
     private $status_nummeraanduiding;
     
     /**
-     * @param string $status_verblijfsobject The last know status of this addres.
+     * @param string $status_verblijfsobject The last known status of this address.
      *
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
-     *         	   "description" = "The last know status of the verblijfsobject belonging to this addres",
+     *         	   "description" = "The last known status of the verblijfsobject belonging to this address",
      *             "type"="string",
      *             "example"="VerblijfsobjectInGebruik"
      *         }
@@ -265,12 +265,12 @@ class Adres
     private $status_verblijfsobject;
     
     /**
-     * @param string $status_openbare_ruimte The last know status of this addres.
+     * @param string $status_openbare_ruimte The last known status of this address.
      *
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
-     *         	   "description" = "The last know status of the openbare ruimte belonging to this addres",
+     *         	   "description" = "The last known status of the openbare ruimte belonging to this address",
      *             "type"="string",
      *             "example"="NaamgevingUitgegeven"
      *         }
@@ -280,12 +280,12 @@ class Adres
     private $status_openbare_ruimte;
     
     /**
-     * @param string $status_woonplaats The last know status of this addres.
+     * @param string $status_woonplaats The last known status of this address.
      *
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
-     *         	   "description" = "The last know status of the woonplaats belonging to this addres",
+     *         	   "description" = "The last known status of the woonplaats belonging to this address",
      *             "type"="string",
      *             "example"="WoonplaatsAangewezen"
      *         }
@@ -300,7 +300,7 @@ class Adres
      * @ApiProperty(
      *     attributes={
      *         "swagger_context"={
- 	 *         	   "description" = "The zip or postalcode of  the addres you are searching for",
+ 	 *         	   "description" = "The zip or postalcode of  the address you are searching for",
      *             "type"="array",
      *             "example"="[]"
      *         }
