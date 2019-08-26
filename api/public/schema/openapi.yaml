@@ -1,0 +1,109 @@
+openapi: 3.0.2
+info:
+  title: Adressen
+  version: 0.0.1
+  description: |
+    This API is designed to assist in form auto filling trough the [BAG API ]( https://bag.basisregistraties.overheid.nl/restful-api/-/article/basisregistraties-adressen-en-gebouwen-bag-). It takes commen form fields as input (__huisnummer__ and __postcode__) and then supplies any correlating addresses. 
+    It does so by looking op BAG *huisnummeraanduidingen* and combining those with the appropriate *openbareruimte*,*verblijfsobject* and *woonplaats* in order to give a complete address as response. 
+        
+    
+paths:
+  /adressen:
+    get:
+      tags:
+        - Adres
+      operationId: getAdresCollection
+      summary: 'Retrieves the collection of Adres resources.'
+      responses:
+        200:
+          description: 'Adres collection response'
+          content:
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Adres'
+            application/ld+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Adres'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Adres'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Adres'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Adres'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Adres'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Adres'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Adres'
+      parameters:
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+components:
+  schemas:
+    Adres:
+      type: object
+      description: 'An BAG addres'
+      properties:
+        id:
+          readOnly: true
+          type: string
+        type:
+          type: string
+        oppervlakte:
+          type: integer
+        huisnummer:
+          type: integer
+        huisnummer_toevoeging:
+          type: string
+        straat:
+          type: string
+        postcode:
+          type: string
+        woonplaats:
+          type: string
+        woonplaats_nummer:
+          type: integer
+        gemeente_nummer:
+          type: integer
+        gemeente_rsin:
+          type: string
+        status_nummeraanduiding:
+          type: string
+        status_verblijfsobject:
+          type: string
+        status_openbare_ruimte:
+          type: string
+        status_woonplaats:
+          type: string
+        links:
+          type: array
+          items:
+            type: string
