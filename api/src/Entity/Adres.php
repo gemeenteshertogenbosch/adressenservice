@@ -6,7 +6,6 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,7 +50,9 @@ use Doctrine\ORM\Mapping as ORM;
  *                          "description" = "The zip or postcode of the address in a P6 format e.g. 1234AB (without spaces)",
  *                          "required" = true,
  *                          "type" : "string",
- *                          "format" : "P6"
+ *                          "format" : "P6",
+ *             				"maxLength"="6",
+ *             				"minLength"="6"
  *                      }
  *                  }
  *               }
@@ -60,7 +61,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     itemOperations={
  *     }
  * )
- * @ORM\Entity(repositoryClass="App\Repository\AdresRepository")
+ * @ORM\Entity()
  * @ApiFilter(NumericFilter::class, properties={"test"})
  */
 class Adres
@@ -167,7 +168,9 @@ class Adres
      *         "swagger_context"={
  	 *         	   "description" = "The zip or postcode of this address",
      *             "type"="string",
-     *             "example"="1012RJ"
+     *             "example"="1012RJ",
+     *             "maxLength"="6",
+     *             "minLength"="6"
      *         }
      *     }
      * )
