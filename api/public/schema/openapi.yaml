@@ -66,6 +66,9 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+security:
+  -
+    apiKey: []
 components:
   schemas:
     Adres:
@@ -107,3 +110,9 @@ components:
           type: array
           items:
             type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      description: 'Value for the Authorization header'
+      name: Authorization

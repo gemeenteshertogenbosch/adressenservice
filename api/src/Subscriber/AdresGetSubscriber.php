@@ -58,6 +58,10 @@ final class AdresGetSubscriber implements EventSubscriberInterface
 		$postcode = $event->getRequest()->query->get('postcode');
 		$huisnummerToevoeging= $event->getRequest()->query->get('huisnummertoevoeging');
 		
+		// Let clear up the postcode
+		$postcode = preg_replace('/\s+/', '', $postcode);
+		$postcode = strtoupper($postcode);
+		
 		// Even iets van basis valdiatie
 		if(!$huisnummer || !is_int($huisnummer)){
 			throw new InvalidArgumentException(sprintf('Invalid huisnummer: '.$huisnummer));
@@ -78,7 +82,7 @@ final class AdresGetSubscriber implements EventSubscriberInterface
 			// Lets loop trough the addreses to see if we have a match
 			$filterdAdressen = [];
 			foreach($adressen as $adres){
-				if(array_key_exists('huisnummertoevoeging', $adres) && preg_match( '/.*?'. $huisnummerToevoeging.'.*?/' ,$adres['huisnummertoevoeging'])){
+			    if(array_key_exists('huisnummertoevoeging', $adres) && preg_match( '/.*?'. strtolower($huisnummerToevoeging) .'.*?/' ,strtolower($adres['huisnummertoevoeging']))){
 					$filterdAdressen[] = $adres;
 				}
 			}
