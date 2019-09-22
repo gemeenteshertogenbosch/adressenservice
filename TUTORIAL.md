@@ -1,11 +1,12 @@
 # Tutorial
 
 What do you need for this tutorial?
-* browser
-* github account
-* git client
-* docker account
-* docker for desktop
+
+* Browser
+* Github account
+* Git client
+* Docker account
+* Docker for desktop
 
 ## Generating your component (repository/codebase)
 Starting up your first Common Ground component is extremely easy, al you need is a GitHub account and go the link below and fill in the form, press create and press to we have a component!
