@@ -1,5 +1,5 @@
 # Tutorial
-What do you need for this tutorial?
+For this tutorial you need the following:
 * Browser
 * Github account
 * Git client
