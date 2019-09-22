@@ -58,7 +58,8 @@ We should now see a wizward that allows us to either make new entities, or add p
 
 ## Keeping your repository up to date with the Conduction Common Ground component 
 
-There are basically three reasons why you should want to keep your repository up to date with the Conduction proto component
+There are basically three reasons why you should want to keep your repository up to date with the Conduction proto component:
+
 * Security, Conduction performs regular security updates on 
 * Functionality we strive to make regular 
 * Compliance, as discussions in the broader Common Ground community progress API standars might advance or change. Conduction will regularly update the Common Ground component with those changes. 
@@ -68,7 +69,7 @@ Best practice is to fetch the Conduction Common Ground component into a local up
 __Please make sure the you have commited al your changes to your current codebase and pushed a backup copy to your Git repo before continuing__
 
 ```CLI
-git remote add upstream https://github.com/ConductionNL/Proto-component-commonground.git
+git remote add upstream [https://github.com/ConductionNL/Proto-component-commonground.git]
 git fetch upstream
 git branch upstream upstream/master
 ```
@@ -98,7 +99,7 @@ Wel it actually isn't, there is a specific commonground platform over at common-
 
 When using Github. To set up a webhook, go to the settings page of your repository or organization. From there, click Webhooks, then Add webhook. Use te following settings:
 
-* Payload URL: https://www.common-ground.dev/webhook/github
+* Payload URL: [https://www.common-ground.dev/webhook/github]
 * Content type: Application/JSON
 * Secret: [leave blanck]
 * Events: [just the push event]
