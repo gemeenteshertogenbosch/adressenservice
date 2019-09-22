@@ -37,13 +37,13 @@ $ docker-compose up
 
 Your computer should now start up your local development environment. Don’t worry about al the code coming by, let's just wait until it finishes. You're free to watch along and see what exactly docker is doing, you will know when it's finished when it tells you that it is ready to handle connections. 
 
-Open your browser type http://localhost/ as address and hit enter, you should now see your common ground component up and running.
+Open your browser type <http://localhost/> as address and hit enter, you should now see your common ground component up and running.
 
 **What are we looking at?**
 The Common Ground base component provides a bit more than just a development interface, it also includes an example application and a backend that automatically hooks into your api. For now we're just going to focus on our api, but is good to read up on all the features of the Common Ground base component here.  
 
 ## Adding your own objects
-You can now access your api at http://localhost:8080/, as you can see it's pre-loaded with some example objects. Let's replace them with your own objects!
+You can now access your api at <http://localhost:8080/>, as you can see it's pre-loaded with some example objects. Let's replace them with your own objects!
 
 First let's remove the objects currently in the api, we can do that by just removing the entities form our code base, navigate to the folder where you stored your code and open the folder api/src/Entity , you can find the example entities (our name for objects) there. Just delete all the php files in that folder.
 
@@ -69,7 +69,7 @@ Best practice is to fetch the Conduction Common Ground component into a local up
 __Please make sure the you have commited al your changes to your current codebase and pushed a backup copy to your Git repo before continuing__
 
 ```CLI
-git remote add upstream [https://github.com/ConductionNL/Proto-component-commonground.git]
+git remote add upstream <https://github.com/ConductionNL/Proto-component-commonground.git>
 git fetch upstream
 git branch upstream upstream/master
 ```
@@ -99,7 +99,7 @@ Wel it actually isn't, there is a specific commonground platform over at common-
 
 When using Github. To set up a webhook, go to the settings page of your repository or organization. From there, click Webhooks, then Add webhook. Use te following settings:
 
-* Payload URL: [https://www.common-ground.dev/webhook/github]
+* Payload URL: <https://www.common-ground.dev/webhook/github>
 * Content type: Application/JSON
 * Secret: [leave blanck]
 * Events: [just the push event]
