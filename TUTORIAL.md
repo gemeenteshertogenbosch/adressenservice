@@ -1,8 +1,9 @@
 # Tutorial
 * Browser
-
-
-* Browser
+* Github account
+* Git client
+* Docker account
+* Docker for desktop
 
 
 ## Generating your component (repository/codebase)
