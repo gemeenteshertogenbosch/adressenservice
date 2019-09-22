@@ -1,6 +1,13 @@
-# About this Tool
+# Readme
+Dit Common Ground component verrijkt huisnummer en postcode bevragingen met gegevens uit het BAG.
 
-The Addres tool 
+## About this Tool
+De huidige iteratie van het BAG kan op dit moment nog niet aan alle wensen voldoen die de gemeentes hebben. Dit component lost een deel van dot probleem op. Het stelt je in staat om het BAG te bevragen op huisnummer en postcode en een volwaardig adres terug te krijgen. Zie ook de openApi documentatie voor meer details.
+
+## Features
+* Adressen opzoeken
+* 
+ 
 
 
 ## Credits
