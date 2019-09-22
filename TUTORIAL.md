@@ -24,7 +24,7 @@ Before we can spin up our component we must first get a local copy from our repo
 
 For this example where going to use GitKraken but you can use any tool you like, feel free to skip this part if you are already familiar with setting up a local clone of your repository.
 
-Open gitkraken press “clone a repro” and fill in the form (select where on your local machine you want the repository to be stored, and fill in the link of your repository on github), press “clone a repro!” and you should then see GitKraken downloading your code. After it's done press ‘open now’ (in the box on top) and voilá your codebase (you should see an initial commit on a master branche).
+Open gitkraken press *“clone a repro”* and fill in the form (select where on your local machine you want the repository to be stored, and fill in the link of your repository on github), press *“clone a repro!”* and you should then see GitKraken downloading your code. After it's done press ‘open now’ (in the box on top) and voilá your codebase (you should see an initial commit on a master branche).
 
 You can now navigate to the folder where you just installed your code, it should contain some folders and files and generally look like this. We will get into the files later, lets first spin up our component!
 
@@ -49,7 +49,7 @@ First let's remove the objects currently in the api, we can do that by just remo
 
 Next let's add our own entities, we can do this in two ways, we can do old fashioned coding, but we can also use the build in maker bundle of the proto component, to quickly generate our entities for us (without the fuss of actual coding).
  
-Let's open a new command line window and navigate to our root folder, exactly like we did under “spinning up your component”. And then lets fire up maker bundle (make sure that your component is still running in your other command window). We can do so by the following command:
+Let's open a new command line window and navigate to our root folder, exactly like we did under *“spinning up your component”*. And then lets fire up maker bundle (make sure that your component is still running in your other command window). We can do so by the following command:
 
 ```CLI
 $ docker-compose exec php php bin/console make:entity --api-platform
@@ -97,6 +97,7 @@ A vital part of te common ground community is sharing your work, and telling oth
 Wel it actually isn't, there is a specific commonground platform over at common-gorund.dev that reads repositorys and updates user. So the only thing we need to do is tell this platform that we have started a new common ground repository. And tell it when we have updates ours. We can do all that by simply adding a webhook to our component. 
 
 When using Github. To set up a webhook, go to the settings page of your repository or organization. From there, click Webhooks, then Add webhook. Use te following settings:
+
 * Payload URL: https://www.common-ground.dev/webhook/github
 * Content type: Application/JSON
 * Secret: [leave blanck]
